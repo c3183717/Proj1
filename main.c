@@ -13,9 +13,40 @@
  */
 
 
-#iclude <stdio.h>
-
-int main() {
-// Created the GITHUB repository within the Lab
-return 0
+#include<stdio.h>
+ 
+int main()
+{
+    int choice;
+ 
+    do
+    {
+        printf("Welcome To Jackson's Encryption/Decryption Tool\n");
+        printf("Please Choose From the Following Options\n");
+        printf("1.Rotation Cypher Encryption\n");
+        printf("2.Rotation Cypher Decryption\n");
+        printf("3.Substitution Cypher Encryption\n");
+        printf("4.Substitution Cypher Decryption\n");
+        scanf ("%d", choice);
+ 
+        switch (choice)
+        {
+        case1:
+            printf("Rotation Cypher Encryption Chosen");
+            break;
+        case2:
+            printf("Rotation Cypher Decryption Chosen");
+            break;
+        case3:
+            printf("3.Substitution Cypher Encryption Chosen");
+            break;
+        case4:
+            printf("4.Substitution Cypher Decryption Chosen");
+            break;
+        default:
+            printf("wrong choice.Enter Again");
+            break;
+        }
+ 
+    } while(choice != 4);
 }
