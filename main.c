@@ -4,35 +4,35 @@
 // Extension Granted: 13/05.2019
 // Laboratory Time: Thursday 5-8pm
 // Program Description: The following program has been designed to adhere to tasks 1-5 outlined in programming Assignment 1
-//       				Throughout the code variables and function have been given obvious names this is intended as it will reduce 
-//						the need for copius amounts of commenting. I will be providing adequate commenting but nothing over the top
-//						as if someone who is interested in reading the code must have some knowledge on what the code is intended 
-//						to do.
+// Throughout the code variables and function have been given obvious names this is intended as it will reduce 
+// the need for copius amounts of commenting. I will be providing adequate commenting but nothing over the top
+// as if someone who is interested in reading the code must have some knowledge on what the code is intended 
+// to do.
 
 #include <stdio.h>
 #include <string.h>
 
 
 void RotEnrypt(char *message, int key);                               //Funtion Declaration for Task 1 (1 Mark)
-void RotDecrypt(char *message, int key);						      //Funtion Declaration for Task 2 (1 Mark)	
-void SubEncrypt(char *message, char *encryptKey);		              //Funtion Declaration for Task 3 (1 Mark)
-void SubDecrypt(char *message, char *encryptKey);			          //Funtion Declaration for Task 4 (1 Mark)
-void RotDecrypt_Without_Key(char *message, int key);				  //Funtion Declaration for Unseen Rotation Cipher Task (0.5 Marks) 
+void RotDecrypt(char *message, int key);			      //Funtion Declaration for Task 2 (1 Mark)	
+void SubEncrypt(char *message, char *encryptKey);		      //Funtion Declaration for Task 3 (1 Mark)
+void SubDecrypt(char *message, char *encryptKey);		      //Funtion Declaration for Task 4 (1 Mark)
+void RotDecrypt_Without_Key(char *message, int key);		      //Funtion Declaration for Unseen Rotation Cipher Task (0.5 Marks) 
 
 
 int main()
 {
-
+//_________________________________________________________________________________________________________________________________________________
 //Declaration of variable used throughout the main function 
 
 char encryptKey[27];
 char message[100];    /* variable that will store the string of text entered by the user */
-char letter;
 int key;			  /* Rotation amount */
 int option;			  /* variable to store users option for what happens to entered text */
 int c;				  /* Temporary Variable for storing user input */
+char letter;
 
-
+//_________________________________________________________________________________________________________________________________________________
 // Intial Welcome message followed by the user input
 
 
@@ -40,7 +40,7 @@ printf("Welcome to Jackson's Fantastic Encryption/Decryption Tool: \n");
 printf("Please Enter the The Text You Wish to Encrypt/Decrypt: \n");
 scanf("%[^\n]%*c",message);
 
-
+//_________________________________________________________________________________________________________________________________________________
 // User option choice menu
 
 printf("Select option to be completed\n");
@@ -50,11 +50,11 @@ printf("3. Encryption of a message with a substitution cipher given message text
 printf("4. Decryption of a message encrypted with a substitution cipher given cipher text and substitutions\n");
 printf("5. Decryption of a message encrypted with a rotation cipher given cipher text only \n");
 
-
-// Reading user's choice 
+//_________________________________________________________________________________________________________________________________________________
+// Reading user's choice and storing to "option"
 
 scanf("%d", &option);
-
+//_________________________________________________________________________________________________________________________________________________
 // While Loop that will continually ask user input if the user enters incorrect choice
 
 while(option>5||option<1){
@@ -64,13 +64,13 @@ while(option>5||option<1){
 
 printf("You Have Chosen Option %d\n", option);
 
-
+//_________________________________________________________________________________________________________________________________________________
    // Switch case statements containing:
    // Case 1: Task 1 
    // Case 2: Task 2 
    // Case 3: Task 3
    // Case 4: Task 4
-   // Case 5: Task 5 ( Rotation Cipher Without Key )
+   // Case 5: Task 5 
 
 switch (option) {
     case 1:
@@ -97,18 +97,18 @@ switch (option) {
     break;
       
 } // end switch case
-
+//_________________________________________________________________________________________________________________________________________________
 return 0;
 } 
 
 // End Of Main Function
 
-
+//_________________________________________________________________________________________________________________________________________________
 // The following section cointains all code for the function declarations seen at the begining of the program
 
-
-
+//_________________________________________________________________________________________________________________________________________________
 // Funtion for rotation cipher encryption (Task 1)
+
 void RotEnrypt(char *message, int key) {
     printf("Enter plaintext to be encypted: ");
                    printf("%s\n", message);
@@ -153,8 +153,9 @@ void RotEnrypt(char *message, int key) {
 } 
 
 // End of Function Void RotEnrypt
+//_________________________________________________________________________________________________________________________________________________
 
-
+// Funtion for rotation cipher decryption (Task 2)
 
 void RotDecrypt(char *message, int key) {
     printf("Enter ciphertext to decrypt: \n");
@@ -197,9 +198,9 @@ void RotDecrypt(char *message, int key) {
                    }
 				   
 // End Function Void RotDecrypt
-                 
+//_________________________________________________________________________________________________________________________________________________                 
 				 
-// Function used for substitution encryption 
+// Function used for substitution encryption  (Task 3)
 				 
 void SubEncrypt(char *message, char *encryptKey) {
     int iteration = 0;
@@ -221,8 +222,8 @@ void SubEncrypt(char *message, char *encryptKey) {
                         printf("CipherText message: %s\n", message);
 }
 
-
-// Function used for substitution decryption 
+//_________________________________________________________________________________________________________________________________________________
+// Function used for substitution decryption (Task 4)
 
 void SubDecrypt(char *message, char *encryptKey) {
     int iteration;
@@ -258,9 +259,9 @@ void SubDecrypt(char *message, char *encryptKey) {
 } 
 
 // End Function Void SubDecrypt
+//_________________________________________________________________________________________________________________________________________________
 
-
-// Function used for rotation decryption without using a key
+// Function used for rotation decryption without using a key (Task 5)
 
 void RotDecrypt_Without_Key(char *message, int key) {
 printf("Enter ciphertext to decrypt: \n");
@@ -306,3 +307,4 @@ printf("Enter ciphertext to decrypt: \n");
 } 
 
 // End Function Void RotDecrypt_Without_Key
+//_________________________________________________________________________________________________________________________________________________
