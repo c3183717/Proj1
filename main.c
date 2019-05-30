@@ -4,20 +4,20 @@
 // Extension Granted: 13/05.2019
 // Laboratory Time: Thursday 5-8pm
 // Program Description: The following program has been designed to adhere to tasks 1-5 outlined in programming Assignment 1
-// Throughout the code variables and function have been given obvious names this is intended as it will reduce 
-// the need for copius amounts of commenting. I will be providing adequate commenting but nothing over the top
-// as if someone who is interested in reading the code must have some knowledge on what the code is intended 
-// to do.
+//       				Throughout the code variables and function have been given obvious names this is intended as it will reduce 
+//						the need for copius amounts of commenting. I will be providing adequate commenting but nothing over the top
+//						as if someone who is interested in reading the code must have some knowledge on what the code is intended 
+//						to do.
 
 #include <stdio.h>
 #include <string.h>
 
 
 void RotEnrypt(char *message, int key);                               //Funtion Declaration for Task 1 (1 Mark)
-void RotDecrypt(char *message, int key);			      //Funtion Declaration for Task 2 (1 Mark)	
-void SubEncrypt(char *message, char *encryptKey);		      //Funtion Declaration for Task 3 (1 Mark)
-void SubDecrypt(char *message, char *encryptKey);		      //Funtion Declaration for Task 4 (1 Mark)
-void RotDecrypt_Without_Key(char *message, int key);		      //Funtion Declaration for Unseen Rotation Cipher Task (0.5 Marks) 
+void RotDecrypt(char *message, int key);						      //Funtion Declaration for Task 2 (1 Mark)	
+void SubEncrypt(char *message, char *encryptKey);		              //Funtion Declaration for Task 3 (1 Mark)
+void SubDecrypt(char *message, char *encryptKey);			          //Funtion Declaration for Task 4 (1 Mark)
+void RotDecrypt_Without_Key(char *message, int key);				  //Funtion Declaration for Unseen Rotation Cipher Task (0.5 Marks) 
 
 
 int main()
@@ -109,44 +109,44 @@ return 0;
 //_________________________________________________________________________________________________________________________________________________
 // Funtion for rotation cipher encryption (Task 1)
 
-void RotEnrypt(char *message, int key) {
+void RotEnrypt(char *message, int key) {                                                       //RotEnrypt function with parameters message(pointer) and key
     printf("Enter plaintext to be encypted: ");
                    printf("%s\n", message);
-                   printf("Enter key:\n ");
-                   scanf("%d",&key);
+                   printf("Enter key:\n ");                                                    
+                   scanf("%d",&key);														   //Taking user's input for key
                    printf("Read %d\n", key);
-                   int iteration;
+                   int iteration;															   //Declaring "iteration" integer
                    char letter;
                   
-                   for(iteration = 0; message[iteration] != '\0'; ++iteration){
-                       letter = message[iteration];
+                   for(iteration = 0; message[iteration] != '\0'; ++iteration){                //Iterating through each character in message
+                       letter = message[iteration];                                            //letter is the character of message
                       
                        if(letter >= 'A' && letter <= 'Z'){
                            letter = letter + key;
                           
-                           if(letter > 'Z'){
-                               letter = letter - 'Z' + 'A' - 1;
+                           if(letter > 'Z'){                                                   //Nested if ... if letter is greater than Z than
+                               letter = letter - 'Z' + 'A' - 1;								   //Example: letter = Z+4 ==> letter= Z+4 -Z + A -1==> letter= D
                            }
                           
-                           message[iteration] = letter;
+                           message[iteration] = letter;										   //Replacing new character in place of old character in message
                        }
                       
                       
-                       else if(letter >= 'a' && letter <= 'z'){
-                           letter = letter + key;
+                       else if(letter >= 'a' && letter <= 'z'){								   //If letter is lower case letter
+                           letter = letter + key;											   //Then adding key & letter together 
                           
-                           if(letter > 'z'){
-                               letter = letter - 'z' + 'a' - 1;
+                           if(letter > 'z'){												   //If letter is greater than 
+                               letter = letter - 'z' + 'a' - 1;								   //
                            }
                           
-                           message[iteration] = letter;
+                           message[iteration] = letter;										   //replacing new character in place of old character in message
                           
                            }
                           
                            }
                   
                   
-                   printf("Ciphertext message: %s", message);
+                   printf("Ciphertext message: %s", message);								    //Printing the cipher text
                   
                               
          
@@ -157,30 +157,30 @@ void RotEnrypt(char *message, int key) {
 
 // Funtion for rotation cipher decryption (Task 2)
 
-void RotDecrypt(char *message, int key) {
+void RotDecrypt(char *message, int key) {														//RotDecrypt function with parameters message and key
     printf("Enter ciphertext to decrypt: \n");
-                   printf("%s\n", message);
+                   printf("%s\n", message);														//printing message
                    printf("Enter key: \n");
-                   scanf("%d", &key);
-                   int iteration;
+                   scanf("%d", &key);                                                           //Taking user input for key
+                   int iteration;																//Declaring Variables
                    char letter;
                   
-                        for(iteration = 0; message[iteration] != '\0'; ++iteration){
-                       letter = message[iteration];
+                        for(iteration = 0; message[iteration] != '\0'; ++iteration){			//Iterating through each character in message
+                       letter = message[iteration];												//Storing character from message to letter
                       
                       
-                           if(letter >= 'A' && letter <= 'Z'){
-                           letter = letter - key;
+                           if(letter >= 'A' && letter <= 'Z'){                                  //If letter is Capital
+                           letter = letter - key;												//Removing the key from letter
                           
-                           if(letter < 'A'){
-                               letter = letter + 'Z' - 'A' + 1;
+                           if(letter < 'A'){													//If letter is less than 'A' then
+                               letter = letter + 'Z' - 'A' + 1;									//Example: letter=A-4 ==> letter= A-4 + Z - A +1 ==> letter=W
                            }
                           
-                           message[iteration] = letter;
+                           message[iteration] = letter;											//Replacing new letter in place of old letter
                        }
                       
                       
-                       else if(letter >= 'a' && letter <= 'z'){
+                       else if(letter >= 'a' && letter <= 'z'){									//If letter is lower case
                            letter = letter - key;
                           
                            if(letter < 'a'){
@@ -193,7 +193,7 @@ void RotDecrypt(char *message, int key) {
                       
                    }
                   
-                   printf("Plaintext message: %s", message);
+                   printf("Plaintext message: %s", message);									//Printing the plain text
                   
                    }
 				   
@@ -204,58 +204,60 @@ void RotDecrypt(char *message, int key) {
 				 
 void SubEncrypt(char *message, char *encryptKey) {
     int iteration = 0;
-    printf("Enter Aphabet Encryption Key: \n");
-    scanf("%s", encryptKey);
+    printf("Enter Aphabet Encryption Key: \n");													//Display the message to input Alphabet Encryption key
+    scanf("%s", encryptKey);																	//Read the encryption key
    
     
-       for (iteration = 0; iteration < strlen(message); iteration++)
+       for (iteration = 0; iteration < strlen(message); iteration++)							//Loop will continue from 0 to the end of message
         {
-            char letter = message[iteration];
-            if (letter >= 'A' && letter <= 'Z')
+            char letter = message[iteration];													//Assign the character at message[iteration] to letter
+            if (letter >= 'A' && letter <= 'Z')													//Check for uppercase character
                 {
           
-                letter = encryptKey[letter - 'A'];
+                letter = encryptKey[letter - 'A'];												//update the value of letter by assigning the chracter at encryptKey[letter-'A']
                 }
 
-                    message[iteration] = letter;
+                    message[iteration] = letter;												//store the letter to message[iteration]
         }
-                        printf("CipherText message: %s\n", message);
+                        printf("CipherText message: %s\n", message);							//Display the cipher text
 }
 
 //_________________________________________________________________________________________________________________________________________________
 // Function used for substitution decryption (Task 4)
 
+
 void SubDecrypt(char *message, char *encryptKey) {
     int iteration;
     int iteration_Num_Two = 0;
     int letter;
-    printf("Enter Encryption Key: \n");
-    scanf("%s", encryptKey);
-        for (iteration = 0; message[iteration] != '0'; iteration++)
+    printf("Enter Encryption Key: \n");															//Display the message to enter encryption key
+    scanf("%s", encryptKey);																	//Input the Encryption key
+        for (iteration = 0; message[iteration] != '0'; iteration++)								//loop will continue till message reaches to end
             {
-               letter = message[iteration];
-                    if (letter >= 'A' && letter <= 'Z')
+               letter = message[iteration];														//Assign the first character of message to letter
+                    if (letter >= 'A' && letter <= 'Z')											//Check the letter is between 'A' to 'Z' i.e/ upper case character or not
                         {
-                            letter = letter - 32;
+                            letter = letter - 32;												//Move the letter to 32 characters back
                         }
-                            if (letter >= 65 && letter <= 90) {
+                            if (letter >= 65 && letter <= 90) {									//After subtraction if the letter lies in the range 65 to 90(inclusive)
                               
-                                for (iteration_Num_Two = 0; iteration_Num_Two < 27; iteration_Num_Two++)
+                                for (iteration_Num_Two = 0; iteration_Num_Two < 27; iteration_Num_Two++)      //loop will continue from 0 to 26
                                 {
-                                   if (message[iteration] == encryptKey[iteration_Num_Two])
+                                   if (message[iteration] == encryptKey[iteration_Num_Two])		//Check if the message[iteration] and encryptKey[iteration_Num_Two] will equal then terminate the loop
                                         {
                                           break;
                                         }
                                 }
-                        message[iteration] = 'A' + iteration_Num_Two;
+                        message[iteration] = 'A' + iteration_Num_Two;							//Set the message[iteration] to the value of iteration_Num_Two+'A'(uppercase) i.e/ 65+iteration_Num_Two
+						printf("%s\n", message);
                       
                     }
-              printf("%s\n", message);
+              //printf("%s\n", message);															//Display the message
          
             }
            ;
-   printf("CipherText message: %s\n", message);
-   printf("%s\n", encryptKey);
+   printf("CipherText message: %s\n", message);													//Display the cipher text
+   printf("%s\n", encryptKey);																	//Display the encryptKey
 } 
 
 // End Function Void SubDecrypt
@@ -270,37 +272,38 @@ printf("Enter ciphertext to decrypt: \n");
                    char letter;
                    int count = 1;
                   
-                   for (count = 1; count <26; count++) {
+                   for (count = 1; count <26; count++)                                         //Loop runs from 1 to 25
                   
-                        for(iteration = 0; message[iteration] != '\0'; ++iteration){
-                       letter = message[iteration];
+                        for(iteration = 0; message[iteration] != '\0'; ++iteration){		   //Loop will continue till message reaches to end
+                       letter = message[iteration];											   //Assign each character of message to letter
                             key = 1;
                       
-                           if(letter >= 'A' && letter <= 'Z'){
-                           letter = letter - key;
+                           if(letter >= 'A' && letter <= 'Z'){								   //Check whether the letter is between A to Z (UPPERCASE CHARACTER)
+                           letter = letter - key;											   //Shift the letter one step back
                           
-                           if(letter < 'A'){
-                               letter = letter + 'Z' - 'A' + 1;
+                           if(letter < 'A'){												   //after subtracting the key from letter if it goes beyond A (cyclic process)
+
+                               letter = letter + 'Z' - 'A' + 1;                                //then it will assgn the letter to Z
                            }
                           
-                           message[iteration] = letter;
+                           message[iteration] = letter;                                        //REASSIGN THE changed letter to message[iteration]
                        }
                       
                       
-                       else if(letter >= 'a' && letter <= 'z'){
+                       else if(letter >= 'a' && letter <= 'z'){								    //check whether the letter is between A to Z (UPPERCASE CHARACTER)
                            letter = letter - key;
                           
-                           if(letter < 'a'){
-                               letter = letter + 'z' - 'a' + 1;
+                           if(letter < 'a'){                                                    //after subtracting the key from letter if it goes beyond a
+                               letter = letter + 'z' - 'a' + 1;                                 //then it will assgn the letter to z (cyclic process)
                            }
                           
-                           message[iteration] = letter;
+                           message[iteration] = letter;                                         //REASSIGN THE changed letter to message[iteration]
                        }
                       
                        key = key++;
                    }
                   
-                   printf("Plaintext message: %s\n", message);
+                   printf("Plaintext message: %s\n", message);                                  //Display the plain text
                   
                    }
                   
